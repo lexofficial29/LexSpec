@@ -8,4 +8,4 @@ To install run :
 
 To remove run :
 
-`sudo rm -rf /bin/lspec`
+`sudo rm /bin/lspec`
