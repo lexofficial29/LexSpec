@@ -1,0 +1,19 @@
+#!/bin/bash
+
+CYAN="\033[0;36m"
+WHITE="\033[1;37m"
+
+if [ "$EUID" -ne 0 ]
+  then echo -e "${CYAN}Please run as root"
+  exit
+fi
+
+echo -e "${CYAN}+ ${WHITE}Downloading lspec ${CYAN}+"
+curl https://raw.githubusercontent.com/lexofficial29/LexSpec/main/lspec -s -o lspec
+echo -e "${CYAN}+ ${WHITE}Changing perms and moving lspec ${CYAN}+"
+chmod +x lspec
+sudo mv lspec /bin/lspec
+lspec
+echo -e ""
+echo -e "${CYAN}==> Now lspec is installed. To run in the future run lspec in the terminal"
+
