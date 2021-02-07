@@ -10,6 +10,7 @@ mem=$(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / (1024 * 1024)))
 cpumodel=$(lscpu | grep 'Model name' | cut -f 2 -d ":" | awk '{$1=$1}1')
 gpu=$(lspci | grep VGA | cut -d ":" -f3);RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2);
 kernel=$(uname -r)
+os=$(cat /etc/*-release | grep "PRETTY_NAME" | sed 's/PRETTY_NAME=//g' | sed 's/"//g')
 proc=$(nproc)
 uptime=$(uptime)
 date=$(date)
@@ -20,6 +21,7 @@ echo -e "${CYAN}+ GPU Model ==> ${WHITE} $gpu"
 echo -e "${CYAN}+ CPU Model ==> ${WHITE} $cpumodel"
 echo -e "${CYAN}+ Cpu(s) ==> ${WHITE} $proc"
 echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)"
+echo -e "${CYAN}+ Distro ==> ${WHITE} $os"
 echo -e "${CYAN}+ Kernel ==> ${WHITE} $kernel"
 echo -e "${CYAN}+ Date ==> ${WHITE} $date"
 echo -e "${CYAN}+ Uptime ==> ${WHITE} $uptime"
