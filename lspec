@@ -17,7 +17,7 @@ uptime=$(uptime)
 date=$(date)
 
 echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)"
-echo -e "${CYAN}+ Device ==> ${WHITE}$product"
+echo -e "${CYAN}+ Device    ==> ${WHITE}$product"
 echo -e "${CYAN}+ Total RAM ==> ${WHITE}$mem Mb"
 for gpu in "${gpuarray[@]}"; do
     echo -e "${CYAN}+ GPU Model ==> ${WHITE}$gpu"
