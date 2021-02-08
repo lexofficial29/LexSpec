@@ -10,6 +10,7 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)"
 echo -e "${CYAN}+ ${WHITE}Downloading lspec ${CYAN}+"
 curl https://raw.githubusercontent.com/lexofficial29/LexSpec/main/lspec -s -o lspec
 echo -e "${CYAN}+ ${WHITE}Changing perms and moving lspec ${CYAN}+"
