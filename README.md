@@ -2,16 +2,17 @@
 Get system information in linux
 
 
-Installaing
+Installing
 -
 
 `curl https://raw.githubusercontent.com/lexofficial29/LexSpec/main/install -s | sudo bash`
 
 Usage
 -
+
 ![usage screenshot](readme_files/usage.png)
 
-Remove
+Removal
 -
 
 `sudo rm /bin/lspec`
