@@ -18,4 +18,5 @@ chmod +x lspec
 sudo mv lspec /bin/lspec
 lspec
 echo -e ""
+echo -e "${CYAN}==> Now lspec is installed. To run in the future run lspec in the terminal! ${NC}"
 echo -e "${CYAN}==> ${WHITE}Now lspec is installed. To run in the future run lspec in the terminal${NC}"
