@@ -10,7 +10,9 @@ mem=$(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / (1024 * 1024)))
 cpumodel=$(lscpu | grep 'Model name' | cut -f 2 -d ":" | awk '{$1=$1}1')
 readarray -t gpuarray <<< $(lspci | grep VGA | cut -d ":" -f3 | cut -d " " -f 2-)
 RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2)
+cpu_usage=$(top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.1f%%\n", prefix, 100 - v }')
 os=$(cat /etc/*-release | grep "PRETTY_NAME" | sed 's/PRETTY_NAME=//g' | sed 's/"//g')
+
 kernel=$(uname -r)
 proc=$(nproc)
 uptime=$(uptime)
@@ -29,3 +31,4 @@ echo -e "${CYAN}+ Kernel ==> ${WHITE} $kernel"
 echo -e "${CYAN}+ Date ==> ${WHITE} $date"
 echo -e "${CYAN}+ Uptime ==> ${WHITE} $uptime"
 echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +) ${NC}"
+echo -e "${CYAN}+ CPU Usage ==> ${WHITE} $cpu_usage"
