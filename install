@@ -6,7 +6,7 @@ WHITE="\033[1;37m"
 NC='\033[0m' # No Color
 
 if [ "$EUID" -ne 0 ]
-  then echo -e "${CYAN}Please run as root"
+  then echo -e "${CYAN}Please run as root${NC}"
   exit
 fi
 
@@ -15,6 +15,7 @@ echo -e "${CYAN}+ ${WHITE}Downloading lspec ${CYAN}+"
 curl https://raw.githubusercontent.com/lexofficial29/LexSpec/main/lspec -s -o lspec
 echo -e "${CYAN}+ ${WHITE}Changing perms and moving lspec ${CYAN}+"
 chmod +x lspec
+sudo rm -f /bin/lspec
 sudo mv lspec /bin/lspec
 lspec
 echo -e ""
