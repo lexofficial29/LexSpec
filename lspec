@@ -13,8 +13,6 @@ readarray -t gpuarray <<< $(lspci | grep VGA | cut -d ":" -f3 | cut -d " " -f 2-
 os=$(cat /etc/*-release | grep "PRETTY_NAME" | sed 's/PRETTY_NAME=//g' | sed 's/"//g')
 kernel=$(uname -r)
 proc=$(nproc)
-uptime=$(uptime)
-date=$(date)
 
 echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)"
 echo -e "${CYAN}+ Device    ==> ${WHITE}$product"
@@ -27,6 +25,4 @@ echo -e "${CYAN}+ CPU(s)    ==> ${WHITE}$proc"
 echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)"
 echo -e "${CYAN}+ Distro ==> ${WHITE}$os"
 echo -e "${CYAN}+ Kernel ==> ${WHITE}$kernel"
-echo -e "${CYAN}+ Date   ==> ${WHITE}$date"
-echo -e "${CYAN}+ Uptime ==> ${WHITE}$uptime"
 echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)${NC}"
