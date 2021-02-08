@@ -2,10 +2,16 @@
 Get system information in linux
 
 
-To install run :
+Installaing
+-
 
 `curl https://raw.githubusercontent.com/lexofficial29/LexSpec/main/install -s | sudo bash`
 
-To remove run :
+Usage
+-
+![usage screenshot](readme_files/usage.png)
+
+Remove
+-
 
 `sudo rm /bin/lspec`
