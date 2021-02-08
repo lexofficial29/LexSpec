@@ -7,6 +7,7 @@ NC='\033[0m' # No Color
 
 # Gather system info
 product=$(cat /sys/devices/virtual/dmi/id/product_name)
+BoardName=$(cat /sys/devices/virtual/dmi/id/board_name)
 mem=$(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / (1024 * 1024)))
 cpumodel=$(lscpu | grep 'Model name' | cut -f 2 -d ":" | awk '{$1=$1}1')
 readarray -t gpuarray <<< $(lspci | grep VGA | cut -d ":" -f3 | cut -d " " -f 2-)
@@ -16,6 +17,7 @@ proc=$(nproc)
 
 echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)"
 echo -e "${CYAN}+ Device    ==> ${WHITE}$product"
+echo -e "${CYAN}+ Motherboard    ==> ${WHITE}$BoardName"
 echo -e "${CYAN}+ Total RAM ==> ${WHITE}$mem Mb"
 for gpu in "${gpuarray[@]}"; do
     echo -e "${CYAN}+ GPU Model ==> ${WHITE}$gpu"
