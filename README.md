@@ -1,8 +1,8 @@
 # LexSpec
-Get system information in linux
+Get system information in linux.
 
 
-Installaing
+Installing
 -
 
 `curl https://raw.githubusercontent.com/lexofficial29/LexSpec/main/install -s | sudo bash`
