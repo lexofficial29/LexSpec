@@ -15,6 +15,7 @@ echo -e "${CYAN}+ ${WHITE}Downloading lspec ${CYAN}+"
 curl https://raw.githubusercontent.com/lexofficial29/LexSpec/main/lspec -s -o lspec
 echo -e "${CYAN}+ ${WHITE}Changing perms and moving lspec ${CYAN}+"
 chmod +x lspec
+sudo rm -f /bin/lspec
 sudo mv lspec /bin/lspec
 lspec
 echo -e ""
