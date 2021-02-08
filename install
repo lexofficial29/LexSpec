@@ -2,6 +2,7 @@
 
 CYAN="\033[0;36m"
 WHITE="\033[1;37m"
+NC='\033[0m' # No Color
 
 if [ "$EUID" -ne 0 ]
   then echo -e "${CYAN}Please run as root"
@@ -15,5 +16,4 @@ chmod +x lspec
 sudo mv lspec /bin/lspec
 lspec
 echo -e ""
-echo -e "${CYAN}==> Now lspec is installed. To run in the future run lspec in the terminal"
-
+echo -e "${CYAN}==> Now lspec is installed. To run in the future run lspec in the terminal${NC}"
