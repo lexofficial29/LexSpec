@@ -16,7 +16,7 @@ uptime=$(uptime)
 date=$(date)
 
 echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)"
-echo -e "${CYAN}+ Total Ram ==> ${WHITE ${mem} mb"
+echo -e "${CYAN}+ Total Ram ==> ${WHITE} ${mem} mb"
 echo -e "${CYAN}+ GPU Model ==> ${WHITE} ${gpu}"
 echo -e "${CYAN}+ CPU Model ==> ${WHITE} ${cpumodel}"
 echo -e "${CYAN}+ Cpu(s) ==> ${WHITE} ${proc}"
