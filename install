@@ -6,7 +6,7 @@ WHITE="\033[1;37m"
 NC='\033[0m' # No Color
 
 if [ "$EUID" -ne 0 ]
-  then echo -e "${CYAN}Please run as root"
+  then echo -e "${CYAN}Please run as root${NC}"
   exit
 fi
 
