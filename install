@@ -1,5 +1,6 @@
 #!/bin/bash
 
+clear
 CYAN="\033[0;36m"
 WHITE="\033[1;37m"
 NC='\033[0m' # No Color
@@ -9,6 +10,7 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)"
 echo -e "${CYAN}+ ${WHITE}Downloading lspec ${CYAN}+"
 curl https://raw.githubusercontent.com/lexofficial29/LexSpec/main/lspec -s -o lspec
 echo -e "${CYAN}+ ${WHITE}Changing perms and moving lspec ${CYAN}+"
@@ -17,4 +19,4 @@ sudo mv lspec /bin/lspec
 lspec
 echo -e ""
 echo -e "${CYAN}==> Now lspec is installed. To run in the future run lspec in the terminal! ${NC}"
-
+echo -e "${CYAN}==> ${WHITE}Now lspec is installed. To run in the future run lspec in the terminal${NC}"

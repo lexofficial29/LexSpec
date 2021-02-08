@@ -8,7 +8,9 @@ NC='\033[0m' # No Color
 # Gather system info
 mem=$(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / (1024 * 1024)))
 cpumodel=$(lscpu | grep 'Model name' | cut -f 2 -d ":" | awk '{$1=$1}1')
-gpu=$(lspci | grep VGA | cut -d ":" -f3);RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2);
+readarray -t gpuarray <<< $(lspci | grep VGA | cut -d ":" -f3 | cut -d " " -f 2-)
+RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2)
+os=$(cat /etc/*-release | grep "PRETTY_NAME" | sed 's/PRETTY_NAME=//g' | sed 's/"//g')
 kernel=$(uname -r)
 os=$(cat /etc/*-release | grep "PRETTY_NAME" | sed 's/PRETTY_NAME=//g' | sed 's/"//g')
 proc=$(nproc)
@@ -17,7 +19,9 @@ date=$(date)
 
 echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)"
 echo -e "${CYAN}+ Total Ram ==> ${WHITE} $mem mb"
-echo -e "${CYAN}+ GPU Model ==> ${WHITE} $gpu"
+for gpu in "${gpuarray[@]}"; do
+    echo -e "${CYAN}+ GPU Model ==> ${WHITE} $gpu"
+done
 echo -e "${CYAN}+ CPU Model ==> ${WHITE} $cpumodel"
 echo -e "${CYAN}+ Cpu(s) ==> ${WHITE} $proc"
 echo -e "${CYAN}$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' +)"
